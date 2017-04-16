@@ -37,4 +37,4 @@ twitter                = "//twitter.com/h_yeomans"
 # highlightjslanguages = ["go"]                        # additional languages not included in the "common" set
 
 # avatar               = "img/profile.png" # path to image in static dir e.g img/avatar.png (do not use in the same time as gravatar)
-gravatar               = "yeomans.leonel@gmail.com"                # do not use in the same time as avatar
+gravatar               = "b7a3f7fce47695f267d606b171b48503"                # do not use in the same time as avatar
