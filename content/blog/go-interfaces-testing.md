@@ -1,7 +1,7 @@
 +++
 date = "2017-04-16T18:49:32-07:00"
 title = "Go interfaces testing"
-
+draft = true
 +++
 
 
