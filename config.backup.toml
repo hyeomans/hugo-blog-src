@@ -1,0 +1,40 @@
+theme = "tranquil"
+
+baseurl             = "http://hyeomans.com/"
+builddrafts         = false
+canonifyurls        = true
+contentdir          = "content"
+languageCode        = "en-US"
+layoutdir           = "layouts"
+publishdir          = "public"
+author              = "Hector Yeomans"
+title               = "Hector Yeomans"
+pygmentsuseclasses  = true
+disqusshortname     = "hyeomansblog" # Comment out to disable Disqus.
+pluralizelisttitles = false
+googleAnalytics     = "UA-49713985-1"
+
+[permalinks]
+fixed = ":title/"
+blog  = ":slug/"
+
+[params]
+author                 = "Hector Yeomans"
+cachebuster            = true                          # add the current unix timestamp in query string for cache busting css assets
+dateform               = "Jan 2, 2006"
+dateformfull           = "Mon Jan 2 2006 15:04:05 MST"
+description            = "dont(panic())"
+email                  = "me@hyeomans.com"
+extracssfiles          = [ "/css/override.css" ]       # In your `static` directory, add/remove files as necessary.
+faviconfile            = "img/leaf.ico"
+github                 = "//github.com/hyeomans"
+highlightjs            = true
+lang                   = "en"
+linkedin               = "//linkedin.com/in/hector-yeomans"
+noshowreadtime         = false                         # if true, don't show "<x> minutes read" in posts
+selfintro              = ""                            # appears in the site header when set to a non-empty string
+twitter                = "//twitter.com/h_yeomans"
+# highlightjslanguages = ["go"]                        # additional languages not included in the "common" set
+
+# avatar               = "img/profile.png" # path to image in static dir e.g img/avatar.png (do not use in the same time as gravatar)
+gravatar               = "b7a3f7fce47695f267d606b171b48503"                # do not use in the same time as avatar
