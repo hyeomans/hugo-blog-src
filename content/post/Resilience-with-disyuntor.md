@@ -265,3 +265,6 @@ After the first failure, the circuit becomes open. Then after the _cooldown_ per
 When working with multiple external services -- either a Db or http service -- a good resilience practice is to add a circuit breaker.
 
 Disyuntor is a good circuit breaker library, it lacks of some features, but it gets the work done. 
+
+
+__Picture by [Parker Gyokeres](https://flic.kr/p/dXugFe)__
