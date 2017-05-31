@@ -13,7 +13,7 @@ Resilience means the capacity to recover quickly from difficulties. Circuit brea
 <!--more-->
 
 When working with distributed systems, you want resilience. If you're working with "micro-services," 
-you probably have faced with a service going down. When X service goes down, and Y and Z depend on X, 
+you probably have faced with the problem of a service going down. When X service goes down, and Y and Z depend on X, 
 every internal exception could potentially start taking other services down. 
 
 If you don't work with micro-services, you might still have an integration with a payment provider 
@@ -24,7 +24,7 @@ queued up in 30 seconds in your service?
 
 Circuit Breaker is a pattern that can help you with this problem. The Circuit Breaker pattern 
 became famous after Release It! book. To be honest the first time I heard about this 
-model was in 2011 on Dependency Injection in .NET.
+patterns was in 2011 on Dependency Injection in .NET.
 
 > "Circuit Breaker is a stability pattern because it adds robustness to an application by failing 
 fast, instead of hanging and consuming resources while it hangs. This is a good example of a nonfunctional 
@@ -50,7 +50,7 @@ There are three states on a Circuit Breaker implementation:
 * Closed
 
 The closed state represents a healthy system. Going back to the Stripe example, 
-the closed state means request come and go without the known existence of a Circuit breaker.
+the closed state means requests come and go without the known existence of a Circuit breaker.
 
 Circuit breaker takes passive action when that HTTP call fails. On every failure, 
 the circuit breaker is listening for failures. The Circuit Breaker opens when the 
@@ -67,13 +67,12 @@ Usually, an open state call is a custom exception. When using a Circuit Breaker
 implementation, make sure you log and monitor this kind of exceptions.
 
 ## Disyuntor
-Disyuntor is an implementation of Circuit Breaker in Node.js by Auth0. This npm package lets you wrap a critical function in a Circuit Breaker pattern.
+[Disyuntor](https://github.com/auth0/disyuntor) is an implementation of Circuit Breaker in Node.js by [Auth0](https://auth0.com/). This npm package lets you wrap a critical function in a Circuit Breaker pattern.
 
-In this tutorial, we two services. One of them will be flaky for a deterministic 
-period. The other will issue requests. On a naive implementation, we will have a timeout of 30 seconds on each call.
+In this tutorial, you will create two services. One of them will be flaky for a deterministic 
+period. The other will issue requests.
 
-After that, we will add Disyuntor and wrap the call in a Circuit Breaker pattern. 
-You will see the three states in action.
+After that, we will add Disyuntor and wrap the call in a Circuit Breaker pattern. You will see the three states in action.
 
 ### Pre-requisites
 This is a Node.js tutorial, but also I will use yarn to install packages. Whenever you see `yarn add --exact {package}` can
@@ -84,7 +83,7 @@ Let's create a new project, open up your console and type:
 
 ```
 $> mkdir disyuntor-example && cd $_
-$disyuntor-example> yarn init -y
+$disyuntor-example> yarn init -y #or npm init -y
 ```
 
 We will use Express.js to mock out our two services:
@@ -119,7 +118,7 @@ app.listen(3000, () => console.log('Flaky app is listening on port 3000'));
 
 For the sake of this tutorial you will use a simple parameter to control if the server is flaky or not. You will notice the function `blockFor(seconds)`, this was added to simulate a service that takes time to return.
 
-Before creating the other service, you need to add npm packages to create http request to the other service. Also you will add a helper package to run both services from a single command:
+Before creating the other service, you need to add npm packages to create http request to the flaky service. Also you will add a helper package to run both services from a single command:
 
 ```
 $disyuntor-example> yarn add --exact got bluebird concurrently
@@ -191,7 +190,7 @@ Date: Sun, 28 May 2017 14:26:29 GMT
 Connection: keep-alive
 ```
 
-Now imagine this is a production setup. Your flaky service is an internal service that has gone down. Your public service start swamping with requests your internal service. After a while your public service became unresponsive. 
+Now imagine this is a production setup. Your flaky service is an internal service that has gone down. Your public service start swamping with requests your internal service. After a while your public service becomes unresponsive. 
 
 You can even reproduce that scenario with this command:
 
